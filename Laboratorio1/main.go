@@ -10,6 +10,7 @@ func main() {
 		fmt.Println("Seleccione un ejercicio para ejecutar:")
 		fmt.Println("1. Ejercicio 1 (Sumar números pares)")
 		fmt.Println("2. Ejercicio 2 (Contar palabras en una frase)")
+		fmt.Println("3. Ejercicio 3 (Calcular promedio de alumnos)")
 		fmt.Println("0. Salir")
 		fmt.Print("Ingrese su opción: ")
 
@@ -21,6 +22,8 @@ func main() {
 			ej_01()
 		case 2:
 			ej_02()
+		case 3:
+			ej_03()
 		case 0:
 			fmt.Println("Saliendo del programa...")
 			return
