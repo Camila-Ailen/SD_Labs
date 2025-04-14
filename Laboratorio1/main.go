@@ -15,6 +15,7 @@ func main() {
 		fmt.Println("5. Ejercicio 5 (Mostrar contenido de un archivo)")
 		fmt.Println("6. Ejercicio 6 (Sistema en anillo)")
 		fmt.Println("7. Ejercicio 7 (Log de eventos)")
+		fmt.Println("8. Ejercicio 8 (Monitoreo de gorutina)")
 		fmt.Println("0. Salir")
 		fmt.Print("Ingrese su opción: ")
 
@@ -36,6 +37,8 @@ func main() {
 			ej_06()
 		case 7:
 			ej_07()
+		case 8:
+			ej_08()
 		case 0:
 			fmt.Println("Saliendo del programa...")
 			return
