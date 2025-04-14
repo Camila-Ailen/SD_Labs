@@ -18,12 +18,12 @@ func incrementar() {
 	x += 5               // Incrementar x
 }
 
-func diez() {
+func ej_10() {
 	// Crear un WaitGroup para esperar a que todas las goroutines terminen
 	var wg sync.WaitGroup
 
 	// Lanzar 100 goroutines
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 100; i++ {
 		wg.Add(1) // Incrementar el contador del WaitGroup
 		go func() {
 			defer wg.Done() // Decrementar el contador al finalizar
@@ -35,5 +35,5 @@ func diez() {
 	wg.Wait()
 
 	// Imprimir el valor final de x
-	fmt.Printf("El valor final de x es: %d\n", x)
+	fmt.Printf("El valor final de x es: %v\n", x)
 }

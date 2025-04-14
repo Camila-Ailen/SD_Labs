@@ -23,7 +23,7 @@ func a() {
 	b()               // Invocar a la función b()
 }
 
-func main() {
+func ej_11() {
 	// Invocar a la función a() desde la gorutina principal
 	a()
 }
