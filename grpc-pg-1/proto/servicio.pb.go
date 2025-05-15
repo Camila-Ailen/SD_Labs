@@ -109,6 +109,94 @@ func (x *Respuesta) GetMensaje() string {
 	return ""
 }
 
+type ListadoPersonas struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Personas      []*Persona             `protobuf:"bytes,1,rep,name=personas,proto3" json:"personas,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListadoPersonas) Reset() {
+	*x = ListadoPersonas{}
+	mi := &file_proto_servicio_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListadoPersonas) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListadoPersonas) ProtoMessage() {}
+
+func (x *ListadoPersonas) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_servicio_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListadoPersonas.ProtoReflect.Descriptor instead.
+func (*ListadoPersonas) Descriptor() ([]byte, []int) {
+	return file_proto_servicio_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ListadoPersonas) GetPersonas() []*Persona {
+	if x != nil {
+		return x.Personas
+	}
+	return nil
+}
+
+type Persona struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Nombre        string                 `protobuf:"bytes,1,opt,name=nombre,proto3" json:"nombre,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Persona) Reset() {
+	*x = Persona{}
+	mi := &file_proto_servicio_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Persona) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Persona) ProtoMessage() {}
+
+func (x *Persona) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_servicio_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Persona.ProtoReflect.Descriptor instead.
+func (*Persona) Descriptor() ([]byte, []int) {
+	return file_proto_servicio_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *Persona) GetNombre() string {
+	if x != nil {
+		return x.Nombre
+	}
+	return ""
+}
+
 var File_proto_servicio_proto protoreflect.FileDescriptor
 
 const file_proto_servicio_proto_rawDesc = "" +
@@ -117,9 +205,13 @@ const file_proto_servicio_proto_rawDesc = "" +
 	"\rRequerimiento\x12\x16\n" +
 	"\x06nombre\x18\x01 \x01(\tR\x06nombre\"%\n" +
 	"\tRespuesta\x12\x18\n" +
-	"\amensaje\x18\x01 \x01(\tR\amensaje2@\n" +
-	"\bServicio\x124\n" +
-	"\x04Hola\x12\x17.servicio.Requerimiento\x1a\x13.servicio.RespuestaB\tZ\a./protob\x06proto3"
+	"\amensaje\x18\x01 \x01(\tR\amensaje\"@\n" +
+	"\x0fListadoPersonas\x12-\n" +
+	"\bpersonas\x18\x01 \x03(\v2\x11.servicio.PersonaR\bpersonas\"!\n" +
+	"\aPersona\x12\x16\n" +
+	"\x06nombre\x18\x01 \x01(\tR\x06nombre2F\n" +
+	"\bServicio\x12:\n" +
+	"\x04Hola\x12\x17.servicio.Requerimiento\x1a\x19.servicio.ListadoPersonasB\tZ\a./protob\x06proto3"
 
 var (
 	file_proto_servicio_proto_rawDescOnce sync.Once
@@ -133,19 +225,22 @@ func file_proto_servicio_proto_rawDescGZIP() []byte {
 	return file_proto_servicio_proto_rawDescData
 }
 
-var file_proto_servicio_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_proto_servicio_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_proto_servicio_proto_goTypes = []any{
-	(*Requerimiento)(nil), // 0: servicio.Requerimiento
-	(*Respuesta)(nil),     // 1: servicio.Respuesta
+	(*Requerimiento)(nil),   // 0: servicio.Requerimiento
+	(*Respuesta)(nil),       // 1: servicio.Respuesta
+	(*ListadoPersonas)(nil), // 2: servicio.ListadoPersonas
+	(*Persona)(nil),         // 3: servicio.Persona
 }
 var file_proto_servicio_proto_depIdxs = []int32{
-	0, // 0: servicio.Servicio.Hola:input_type -> servicio.Requerimiento
-	1, // 1: servicio.Servicio.Hola:output_type -> servicio.Respuesta
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	3, // 0: servicio.ListadoPersonas.personas:type_name -> servicio.Persona
+	0, // 1: servicio.Servicio.Hola:input_type -> servicio.Requerimiento
+	2, // 2: servicio.Servicio.Hola:output_type -> servicio.ListadoPersonas
+	2, // [2:3] is the sub-list for method output_type
+	1, // [1:2] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_proto_servicio_proto_init() }
@@ -159,7 +254,7 @@ func file_proto_servicio_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_servicio_proto_rawDesc), len(file_proto_servicio_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

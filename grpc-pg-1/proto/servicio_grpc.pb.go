@@ -26,7 +26,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ServicioClient interface {
-	Hola(ctx context.Context, in *Requerimiento, opts ...grpc.CallOption) (*Respuesta, error)
+	Hola(ctx context.Context, in *Requerimiento, opts ...grpc.CallOption) (*ListadoPersonas, error)
 }
 
 type servicioClient struct {
@@ -37,9 +37,9 @@ func NewServicioClient(cc grpc.ClientConnInterface) ServicioClient {
 	return &servicioClient{cc}
 }
 
-func (c *servicioClient) Hola(ctx context.Context, in *Requerimiento, opts ...grpc.CallOption) (*Respuesta, error) {
+func (c *servicioClient) Hola(ctx context.Context, in *Requerimiento, opts ...grpc.CallOption) (*ListadoPersonas, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Respuesta)
+	out := new(ListadoPersonas)
 	err := c.cc.Invoke(ctx, Servicio_Hola_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -51,7 +51,7 @@ func (c *servicioClient) Hola(ctx context.Context, in *Requerimiento, opts ...gr
 // All implementations must embed UnimplementedServicioServer
 // for forward compatibility.
 type ServicioServer interface {
-	Hola(context.Context, *Requerimiento) (*Respuesta, error)
+	Hola(context.Context, *Requerimiento) (*ListadoPersonas, error)
 	mustEmbedUnimplementedServicioServer()
 }
 
@@ -62,7 +62,7 @@ type ServicioServer interface {
 // pointer dereference when methods are called.
 type UnimplementedServicioServer struct{}
 
-func (UnimplementedServicioServer) Hola(context.Context, *Requerimiento) (*Respuesta, error) {
+func (UnimplementedServicioServer) Hola(context.Context, *Requerimiento) (*ListadoPersonas, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Hola not implemented")
 }
 func (UnimplementedServicioServer) mustEmbedUnimplementedServicioServer() {}
