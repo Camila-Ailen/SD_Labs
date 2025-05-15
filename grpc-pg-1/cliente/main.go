@@ -14,6 +14,7 @@ var nombres = []string{"Juan", "Maria", "Pedro", "Ana", "Luis", "Claudio", "Sofi
 
 func main() {
 	var wg sync.WaitGroup
+	var mu sync.Mutex
 	
 	conn, err := grpc.NewClient("localhost:8000", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
@@ -22,10 +23,12 @@ func main() {
 	defer conn.Close()
 	c := proto.NewServicioClient(conn)
 	
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 1000; i++ {
 		wg.Add(1)
 		go func(nombre string) {
 			defer wg.Done()
+			mu.Lock()
+			defer mu.Unlock()
 			
 			ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 			defer cancel()
@@ -34,7 +37,7 @@ func main() {
 				log.Fatalf("Error al llamar al servidro: %v", err)
 			}
 			log.Printf("Respuesta: %s", r.Personas[0])
-		}(nombres[i])
+		}(nombres[i%len(nombres)])
 	}
 	wg.Wait()
 	log.Println("Todas las goroutines han terminado.")
