@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v6.30.2
-// source: proto/kv.proto
+// source: kv.proto
 
 package proto
 
@@ -201,7 +201,7 @@ var Coordinador_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "proto/kv.proto",
+	Metadata: "kv.proto",
 }
 
 const (
@@ -423,5 +423,5 @@ var Replica_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "proto/kv.proto",
+	Metadata: "kv.proto",
 }
