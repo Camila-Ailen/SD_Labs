@@ -1,4 +1,4 @@
-module grpc-pg-3
+module github.com/Camila-Ailen/SD_Labs/practica-kv
 
 go 1.23.5
 
