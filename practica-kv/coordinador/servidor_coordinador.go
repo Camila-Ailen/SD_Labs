@@ -94,7 +94,7 @@ func main() {
 
 	replicaAddrs := flag.Args()
 	if len(replicaAddrs) < 3 {
-		log.Fatalf("Debe proveer al menos 3 direcciones de réplicas, p.ej.: go run servidor_coordinador.go -listen :6000 :50051 :50052 :50053")
+		log.Fatalf("Debe proveer al menos 3 direcciones de réplicas, p.ej.: go run servidor_coordinador.go :50051 :50052 :50053")
 	}
 
 	log.Printf("Coordinador escuchando en %s", *listenAddr)
