@@ -1,4 +1,4 @@
-# Practica Guiada 1
+# Practica Guiada 2
 ## Grupo 2
 ### Integrantes 
 - Gomez Camila
