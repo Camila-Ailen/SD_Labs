@@ -106,39 +106,39 @@ Un componente adicional llamado **distribuidor** recibe las solicitudes de los c
 
 ### Iniciar el primer grupo de nodos (shard 0)
 - Abrí 3 terminales para:
--- node0 (líder)
--- node1 y node2 (se unen)
-´´´
+  - `node0` (líder)
+  - `node1` y `node2` (se unen)
+```bash
 ./hraftd -id node0 -haddr 127.0.0.1:11000 -raddr 127.0.0.1:12000 ~/node0
 ./hraftd -id node1 -haddr 127.0.0.1:11001 -raddr 127.0.0.1:12001 -join 127.0.0.1:11000 ~/node1
 ./hraftd -id node2 -haddr 127.0.0.1:11002 -raddr 127.0.0.1:12002 -join 127.0.0.1:11000 ~/node2
-´´´
+```
 
 ### Iniciar el segundo grupo de nodos (shard 1)
 - Abrí otras 3 terminales para:
-- - node3 (líder)
-- - node4, node5 (se unen)
-´´´
+ - `node3` (líder)
+ - `node4`, `node5` (se unen)
+```bash
 ./hraftd -id node3 -haddr 127.0.0.1:11100 -raddr 127.0.0.1:12100 ~/node3
 ./hraftd -id node4 -haddr 127.0.0.1:11101 -raddr 127.0.0.1:12101 -join 127.0.0.1:11100 ~/node4
 ./hraftd -id node5 -haddr 127.0.0.1:11102 -raddr 127.0.0.1:12102 -join 127.0.0.1:11100 ~/node5
-´´´
+```
 
 ### Iniciar el distribuidor de claves
 Desde otra terminal:
-´´´
+```bash
 cd distributor
 go run main.go
-´´´
+```
 
 ### Cargá los valores usando Postman
-Podés enviar estas peticiones una por una desde Postman a ´´´POST http://localhost:8080/set´´´, usando formato JSON tipo:
-´´´
+Podés enviar estas peticiones una por una desde Postman a ```POST http://localhost:8080/set```, usando formato JSON tipo:
+```bash
 {
   "clave": "batman",
   "valor": "bruce"
 }
-´´´
+```
 ## Lógica de Sharding y Detección de Líder
 - Se usa hash(clave) % 2 para determinar el shard.
 
